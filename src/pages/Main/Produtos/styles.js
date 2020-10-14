@@ -2,57 +2,48 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        justifyContent:'center',
          
         backgroundColor:'#ECECEC'
     },
-    
-    cardLogin:{
-        backgroundColor:'#fff',
-        margin:20,
-        borderRadius:8,
+    headerButtons:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between',
+        margin:5,
+        marginTop:-15,
+       
          
     },
-    formLogin:{
-        margin:10, 
-    },
-    headerCard:{
-        backgroundColor:'#8257E5',
-        borderTopRightRadius:8,
-        borderTopLeftRadius:8,
-    },
-    logo:{
-        alignContent:'center',
-        resizeMode:'contain',
-        width:'100%',
-        justifyContent:'center'
-    },
-    textRegister:{
-        fontSize:22,
-        textAlign:'center',
-        margin:5,
-        color:'#fff'
-        
-    },
-    txtEntrar:{
+    textButtonCard:{
         color:'#fff',
-        fontSize:18,
-        textAlign:'center',
-        fontWeight:'bold'
+        fontSize:14
     },
-    txtCadastro:{
-        fontSize:15,  
-        marginTop:10,
-        color:'#8257E5'
-    },
-    btnLogin:{
-        width:'100%',
-        textAlign:'center',
+    cardButton:{
         backgroundColor:'#8257E5',
-        padding:10,
-        borderRadius:10
+        height:50,
+        padding:15,
+        width:95,
+        height:60,
+        marginTop:20,
+        borderRadius:10,
+        alignItems:'center',
+        justifyContent:'center',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 1.84,
         
-     }
+        elevation: 2,
+        
+    },
+    root:{
+        backgroundColor:'#000',
+ 
+    }
+    
 });
 
 export default styles;

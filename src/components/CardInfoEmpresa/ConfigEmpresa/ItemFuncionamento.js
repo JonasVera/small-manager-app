@@ -43,7 +43,7 @@ function ItemFuncionamento(){
           <Picker
             
             selectedValue={selectedValue}
-             style={{ height: 50, width:100,}}
+             style={{ height: 50, width:150,}}
              onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
              <Picker.Item disabled label="Dia" value="" />
              <Picker.Item label="Segunda-Feira" value="Seg" />
@@ -71,10 +71,10 @@ function ItemFuncionamento(){
                         leftIcon={<AntDesign onPress={showTimepicker} name={'clockcircleo'} color={'#8257E5'}size={18}  />}
                      />
                 </View>
-                <TouchableOpacity  style={styles.btnContactClose} >
+                <TouchableOpacity  style={styles.GpbtnHr} >
                     <AntDesign  name={'closecircleo'}  color={'#8257E5'} size={25}   />
                 </TouchableOpacity>
-                <TouchableOpacity   >
+                <TouchableOpacity  style={styles.GpbtnHr} >
                      <AntDesign  name={'closecircleo'}  color={'#DC143C'} size={25}   />
                 </TouchableOpacity>
                 

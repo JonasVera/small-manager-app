@@ -119,7 +119,12 @@ const styles = StyleSheet.create({
         paddingLeft:10
         
      }, 
-     
+     GpbtnHr:{
+        alignContent:'center',
+        justifyContent:'center',
+        marginTop:10,
+        paddingRight: 10,
+     },
      itemDia:{
          width:'90%',
          flexDirection:'row',

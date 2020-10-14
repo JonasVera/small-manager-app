@@ -39,8 +39,7 @@ function ConfigEmpresa(){
     const [valueContactInstagram,setValueContactInst] = useState();
     const [valueContactFace,setValueContactFace] = useState();
     const [tpIconSaveContact,setTpIconSaveContact] = useState("checkcircleo");  
- 
-     
+  
   
      useEffect(()=>{
          
@@ -66,10 +65,12 @@ function ConfigEmpresa(){
                                 <View style={styles.grupInfoFuncinamento}>
                                     
                                        <ItemFuncionamento/>
-                                       
                                         
-                                     
-                                    <ItemFuncionamento/>
+                                       <ItemFuncionamento/>
+                                       <ItemFuncionamento/>
+                                       <ItemFuncionamento/>
+                                       <ItemFuncionamento/>
+                                       
                                      
                                 </View>
                               
@@ -80,10 +81,8 @@ function ConfigEmpresa(){
                                 {mode == 'Save' ? " Cadastrar" : "  Editar"}
                             </Text>
                          </TouchableOpacity>
-                       
-                
                         
-                     
+                 
                  </View>
                 
                    

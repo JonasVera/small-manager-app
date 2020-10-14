@@ -103,13 +103,18 @@ const styles = StyleSheet.create({
          width:'80%'
      },
      inputHr:{
-        width:'80%'
+        width:'90%'
      },
      
      btnContactClose:{
         alignContent:'center',
         justifyContent:'center',
       
+     },
+     GpbtnHr:{
+        alignContent:'center',
+        justifyContent:'center',
+        padding:5
      },
      grupInfoFuncinamento:{
         margin:5,

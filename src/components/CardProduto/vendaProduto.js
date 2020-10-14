@@ -1,19 +1,22 @@
 import React,{useState} from 'react';
 import {View,Image,Text,TextInput,TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {Picker} from '@react-native-community/picker';
 import { FontAwesome5,AntDesign,Entypo,Foundation,Feather,MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from './styles';
 import { Input } from 'react-native-elements';
 import { CheckBox } from 'react-native-elements'
 import { Avatar, Accessory } from 'react-native-elements';
-function CardProduto(){
+
+function VendaProduto(){
     const navigation = useNavigation();
-     const [formProduto,setFormProduto] = useState(false);
-     
+    const [formProduto,setFormProduto] = useState(false);
+    const [btnActive,setBtnActive] = useState('bntActive'); 
       
     function trocaForm(tp){
          if(tp == "Servico"){
            setFormProduto(false);
+          
          }else{
           setFormProduto(true);
          }
@@ -26,14 +29,13 @@ function CardProduto(){
              
             <View style={styles.cardLogin}>
             <View style={styles.headerCard}>
-                     <Text style={styles.textHeader}> Cadastrar Produto </Text>
+                     <Text style={styles.textHeader}> Lançar produtos </Text>
                  </View>
                  <View style={styles.formLogin}>
                     <View style={styles.grupTpProduto}>
-                         <TouchableOpacity onPress={()=>trocaForm("Produto")} style={styles.bntTpProduto}>
+                         <TouchableOpacity onPress={()=>trocaForm("Produto")}    style={styles.bntTpProduto}>
                                 <Text style={styles.txtEntrar}>
-                                     
-                                        Produto
+                                         Produto
                               </Text>
                          </TouchableOpacity>
                          <TouchableOpacity  onPress={()=>trocaForm("Servico")}  style={styles.bntTpProduto}>
@@ -46,88 +48,83 @@ function CardProduto(){
 
                    {formProduto == true ? 
                    <>
-                    <View style={styles.grupInfo}>
-                         <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
-                                placeholder="Nome do produto"
-                                leftIcon={<Feather name={'tag'}  color={'#8257E5'} size={20}  />}
-                         />
-                     </View> 
-                        
-                        <View style={styles.grupInfo}>
+
+                         <View style={styles.grupInfo}>
+                                 <Picker  style={{ height: 50, width: 150,}}  >
+                                       <Picker.Item disabled label="Produto" value="" />
+                                       <Picker.Item label="1" value="Inst" />
+                                       <Picker.Item label="2" value="Face" />
+                                       <Picker.Item label="3" value="What" />
+                                       <Picker.Item label="4" value="Tel" />
+                                </Picker>
+                         </View> 
+                             
+                     <View style={styles.grupInfo}>
                           <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
                                 placeholder="Preço de venda"
                                 leftIcon={<Foundation name={'pricetag-multiple'}  color={'#8257E5'} size={20}  />}
                           />
                          </View> 
-                      
-                        <View style={styles.grupInfo}>
-                          <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
-                                placeholder="Preço de custo"
-                                leftIcon={<Foundation name={'price-tag'}  color={'#8257E5'} size={20}  />}
-                          />
-                         </View> 
-                         
-                        <View style={styles.grupInfo}>
-                          <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
-                                placeholder="Estoque minimo"
-                                leftIcon={<AntDesign name={'minus'}  color={'#8257E5'} size={20}  />}
-                          />
-                         </View> 
-                         <View style={styles.grupInfo}>
-                          <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
-                                placeholder="Estoque máximo"
-                                leftIcon={<AntDesign name={'plus'}  color={'#8257E5'} size={20}  />}
-                          />
-                         </View>
-                         <Text style={styles.txtCk}>
-                              Faz entregas ?
-                        </Text>
-                         <View style={styles.grupInfo}>
-                         
-                            <CheckBox
-                                 style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
-                                title='Sim'
-                                 checkedColor='#8257E5'
-                                 checkedIcon='dot-circle-o'
-                                 containerStyle={{backgroundColor:'#fff',width:90}}
-                                 uncheckedIcon='circle-o' />
-                            <CheckBox
-                                    style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
-                                    title='Não'
-                                    containerStyle={{backgroundColor:'#fff',width:90}}
-                                    checkedIcon='dot-circle-o'
-                                    checkedColor='#8257E5'
-                                    uncheckedIcon='circle-o' />
-                              
-                            
-                        </View> 
-                         <View style={styles.grupInfo}>
-                          <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
-                                placeholder="Descrição do produto"
-                                leftIcon={<Entypo name={'text'}  color={'#8257E5'} size={20}  />}
-                          />
-                         </View>
-                   </>
-                    :
-                    <>
-                     <View style={styles.grupInfo}>
-                         <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
-                                placeholder="Nome do serviço"
-                                leftIcon={<Feather name={'tag'}  color={'#8257E5'} size={20}  />}
-                         />
-                     </View> 
                         
-                        <View style={styles.grupInfo}>
+                        
+                         <View style={styles.grupInfo}>
                           <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
-                                placeholder="Preço base"
+                                placeholder="Desconto"
                                 leftIcon={<Foundation name={'pricetag-multiple'}  color={'#8257E5'} size={20}  />}
                           />
                          </View> 
+                        <View style={styles.grupInfo}>
+                          <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
+                                placeholder="Quantidade"
+                                leftIcon={<Foundation name={'price-tag'}  color={'#8257E5'} size={20}  />}
+                          />
+                         </View> 
+                          
+                         <View style={styles.grupInfo}>
+                          <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
+                                placeholder="Observação"
+                                leftIcon={<Entypo name={'text'}  color={'#8257E5'} size={20}  />}
+                          />
+                         </View>
+                         
+                   </>
+                    :
+                    <>
+                        <View style={styles.grupSelect}>
+                       
+                                 <Picker  style={{ height: 50, width: 150,}}  >
+                                       <Picker.Item disabled label="Serviço" value="" />
+                                       <Picker.Item label="1" value="Inst" />
+                                       <Picker.Item label="2" value="Face" />
+                                       <Picker.Item label="3" value="What" />
+                                       <Picker.Item label="4" value="Tel" />
+                                </Picker> 
+                         </View> 
+                        
+                        <View style={styles.grupInfo}>
+                          <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
+                                placeholder="Preço"
+                                leftIcon={<Foundation name={'pricetag-multiple'}  color={'#8257E5'} size={20}  />}
+                          />
+                          
+                         </View> 
+                         <View style={styles.grupInfo}>
+                          <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
+                                placeholder="Valor total"
+                                leftIcon={<Foundation name={'pricetag-multiple'}  color={'#8257E5'} size={20}  />}
+                          />
+                          
+                         </View> 
+                         <View style={styles.grupInfo}>
+                          <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
+                                placeholder="Observação"
+                                leftIcon={<Entypo name={'text'}  color={'#8257E5'} size={20}  />}
+                          />
+                         </View>
                          <Text style={styles.txtCk}>
-                              Aceita o recebimento de propostas de orçamento ?
+                            Serviço finalizado ?
                         </Text>
                          <View style={styles.grupInfo}>
-                         
                             <CheckBox
                                  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
                                 title='Sim'
@@ -142,15 +139,9 @@ function CardProduto(){
                                     checkedIcon='dot-circle-o'
                                     checkedColor='#8257E5'
                                     uncheckedIcon='circle-o' />
-                               
-                        </View> 
+                         </View> 
 
-                         <View style={styles.grupInfo}>
-                          <Input  style={{color:'#8257E5',fontFamily:'Poppins_400Regular',}} 
-                                placeholder="Descrição"
-                                leftIcon={<Entypo name={'text'}  color={'#8257E5'} size={20}  />}
-                          />
-                         </View>
+                         
                     </>
                    } 
                    
@@ -159,7 +150,7 @@ function CardProduto(){
                        
                         <Text style={styles.txtEntrar}>
                             <FontAwesome5 name={'check'}  color={'#fff'} size={20}  />
-                                Salvar
+                                Lançar venda
                         </Text>
                     </TouchableOpacity>
                     
@@ -173,4 +164,4 @@ function CardProduto(){
     );
 }
 
-export default CardProduto;
+export default VendaProduto;

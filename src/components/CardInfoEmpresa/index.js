@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
-import {View,Switch,Text,ActivityIndicator,Picker} from 'react-native';
+import {View,Switch,Text,ActivityIndicator} from 'react-native';
+import {Picker} from '@react-native-community/picker';
 import { Image } from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 import { FontAwesome5,MaterialCommunityIcons,MaterialIcons,AntDesign,Entypo,Feather} from "@expo/vector-icons";
@@ -97,18 +98,18 @@ function CardInfoEmpresa(){
                 setLogo(res.data.Result[0].logo); 
                 setDescription(res.data.Result[0].description);
                 setAdress(res.data.Result[0].adress);
-               
+                
                 try {
                      await AsyncStorage.setItem('data_empresa',JSON.stringify(res.data.Result[0]));
                 } catch (error) {
                     console.log(error);
                 }
-                 
+               
               }).catch(err=>{
                 console.log(err);
               }) 
          }
-        
+         getContacts();
       }
      
      async function refreshData (data){
@@ -159,48 +160,51 @@ function CardInfoEmpresa(){
      } 
        
        async function getContacts(){
-        let data;
+         let data;
             console.log("REQUISITADO.2.");
-            const resp =  await api.get(`user/contact?user_id=${user_id}`).then(async res =>{
+            console.log(user_id);
+            if(id !== undefined){
+                const resp =  await api.get(`user/contact?user_id=${user_id}`).then(async res =>{
+             
+                    data = res.data.Result;
+                      
+                     if(data !== null || data.size !== 0 || data !== undefined){
+                      data.map((item) =>{
+                          if(item.category === "FaceBook"){
+                              setValueContactFace(item.value);
+                              setTpContFace(true);
+                          } 
+                          if(item.category === "Instagram"){
+                              setValueContactInst(item.value); 
+                              setTpContInst(true);
+                          }
+                             
+                          if(item.category === "whatsapp"){
+                              setValueContactWhat(item.value); 
+                              setTpContWhat(true);
+                          }
+                           
+                          if(item.category === "Telefone"){
+                              setValueContactTel(item.value); 
+                              setTpContTel(true);
+                          }
+                             
+                       });
            
-              data = res.data.Result;
- 
-                
-               if(data !== null || data.size !== 0 || data !== undefined){
-                data.map((item) =>{
-                    if(item.category === "FaceBook"){
-                        setValueContactFace(item.value);
-                        setTpContFace(true);
-                    } 
-                    if(item.category === "Instagram"){
-                        setValueContactInst(item.value); 
-                        setTpContInst(true);
                     }
-                       
-                    if(item.category === "whatsapp"){
-                        setValueContactWhat(item.value); 
-                        setTpContWhat(true);
-                    }
-                     
-                    if(item.category === "Telefone"){
-                        setValueContactTel(item.value); 
-                        setTpContTel(true);
-                    }
-                       
-                 });
-     
-              }
-
-             }).catch(err=>{
-               console.log(err);
-             });
+      
+                   }).catch(err=>{
+                     console.log(err);
+                   });
+            }
+           
            
      } 
      
      useEffect(()=>{
         displayData();
         getCompanies();
-        getContacts();
+       
   
      },[]);
     return (
@@ -343,7 +347,7 @@ function CardInfoEmpresa(){
                                  leftIcon={  <FontAwesome5 name={'phone'} color={'#8257E5'}size={20}  /> }
                              />
                            </View>
-                           <TouchableOpacity  onPress={()=>addContact("Telefone",valueContactTel)}  style={styles.btnContactClose} >
+                             <TouchableOpacity  onPress={()=>addContact("Telefone",valueContactTel)}  style={styles.btnContactClose} >
                                     <AntDesign  name={tpIconSaveContact}  color={'#8257E5'} size={23}   />
                                </TouchableOpacity>
                               <TouchableOpacity  style={styles.btnContactClose} >

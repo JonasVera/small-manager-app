@@ -10,19 +10,34 @@ const styles = StyleSheet.create({
     
     cardLogin:{
         backgroundColor:'#fff',
-        margin:10,
+       
         borderRadius:8,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 1.84,
-        
-        elevation: 2,
+        width:'100%' 
          
     },
+    grupTpProduto:{
+        justifyContent:'center',
+        flexDirection:'row',
+        padding: 10,
+    },  
+    bntTpProduto:{
+        borderColor:'#8257E5',
+        alignContent:'space-around',
+        borderWidth:1,
+        width:'50%',
+        height:30,
+        justifyContent:'center',
+        paddingRight:10,
+        
+    },
+   
+    btnEdit:{ 
+        borderRadius:8,
+        textAlign:'center',
+        backgroundColor:'#8257E5',
+        padding:5,
+      },
+     
     formLogin:{
         margin:10, 
     },
@@ -46,11 +61,33 @@ const styles = StyleSheet.create({
         color:'#fff',
        
     },
+    grupSelect:{
+        flexDirection:'row',
+    },
+    iconSelect:{
+       padding:10, 
+    },
     txtEntrar:{
         color:'#8257E5',
         fontSize:18,
         textAlign:'center',
-        fontWeight:'bold'
+        justifyContent:'center'
+      
+    },
+    txtPromo:{
+        color:'#8257E5',
+        fontSize:18,
+        textAlign:'center',
+        justifyContent:'center'
+    },
+    btnActive:{
+        backgroundColor:'#8257E5',
+       
+    },
+    txtCk:{
+        color:'#8257E5',
+        fontSize:18,
+        paddingLeft:10,
     },
     txtCadastro:{
         fontSize:17,  
@@ -65,7 +102,7 @@ const styles = StyleSheet.create({
     },
      grupInfo:{
          flexDirection:'row',
-         padding:10,
+       
      },
      txtLabel:{
          fontSize:20,
